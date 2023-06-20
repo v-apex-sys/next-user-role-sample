@@ -1,6 +1,6 @@
 import { SwrResponse } from '@/application/types';
-import { User } from '@/domain/models/users/user';
+import { FetchSWRUserClassResponse } from '../data/types';
 
 export interface IFetchSWR {
-  execute(): SwrResponse<'loading', User[]>;
+  execute(): SwrResponse<'loading', FetchSWRUserClassResponse>;
 }

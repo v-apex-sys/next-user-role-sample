@@ -2,13 +2,17 @@ import { SwrResponse } from '@/application/types';
 import { API, USERS } from '@/infrastructure/Path';
 import IClient from '@/infrastructure/provider/IClient';
 import IUserRepository from '@/interfaces/repository/user/IUserRepository';
-import { GetUserClassResponse, GetUserClassRootParams } from './getUserClass';
+import {
+  Data,
+  GetUserClassResponse,
+  GetUserClassRootParams,
+} from './getUserClass';
 
 export class UserRepository implements IUserRepository {
   constructor(private readonly _client: IClient) {}
 
-  async fetchAll(): Promise<GetUserClassResponse[]> {
-    const { data } = await this._client.get<GetUserClassResponse[]>(
+  async fetchAll(): Promise<GetUserClassResponse<Data[]>> {
+    const { data } = await this._client.get<GetUserClassResponse<Data[]>>(
       API + USERS,
     );
     return data;
@@ -16,15 +20,15 @@ export class UserRepository implements IUserRepository {
 
   async fetch(
     rootParams: GetUserClassRootParams,
-  ): Promise<GetUserClassResponse> {
-    const { data } = await this._client.get<GetUserClassResponse>(
-      API + `${USERS}/${rootParams}`,
+  ): Promise<GetUserClassResponse<Data>> {
+    const { data } = await this._client.get<GetUserClassResponse<Data>>(
+      API + `${USERS}/${rootParams.id}`,
     );
     return data;
   }
 
-  fetchSWR(): SwrResponse<'loading', GetUserClassResponse[] | undefined> {
-    const { data, error } = this._client.useSwr<GetUserClassResponse[]>(
+  fetchSWR(): SwrResponse<'loading', GetUserClassResponse<Data[]> | undefined> {
+    const { data, error } = this._client.useSwr<GetUserClassResponse<Data[]>>(
       API + USERS,
     );
 

@@ -1,5 +1,5 @@
-import { User } from '@/domain/models/users/user';
+import { FetchAllUserClassResponse } from '../data/types';
 
 export interface IFetchAll {
-  execute(): Promise<User[]>;
+  execute(): Promise<FetchAllUserClassResponse>;
 }

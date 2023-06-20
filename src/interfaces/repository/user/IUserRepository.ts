@@ -1,8 +1,14 @@
 import { SwrResponse } from '@/application/types';
-import { GetUserClassResponse, GetUserClassRootParams } from './getUserClass';
+import {
+  Data,
+  GetUserClassResponse,
+  GetUserClassRootParams,
+} from './getUserClass';
 
 export default interface IUserRepository {
-  fetchAll(): Promise<GetUserClassResponse[]>;
-  fetch(rootParams: GetUserClassRootParams): Promise<GetUserClassResponse>;
-  fetchSWR(): SwrResponse<'loading', GetUserClassResponse[]>;
+  fetchAll(): Promise<GetUserClassResponse<Data[]>>;
+  fetch(
+    rootParams: GetUserClassRootParams,
+  ): Promise<GetUserClassResponse<Data>>;
+  fetchSWR(): SwrResponse<'loading', GetUserClassResponse<Data[]>>;
 }

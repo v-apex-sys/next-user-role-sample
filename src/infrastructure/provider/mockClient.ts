@@ -27,7 +27,7 @@ const getTarget = (path?: string) => {
 };
 
 class MockClient implements IClient {
-	defaults = axiosBase.defaults;
+  defaults = axiosBase.defaults;
 
   /**
    * post
@@ -93,11 +93,7 @@ class MockClient implements IClient {
   }
 
   // TODO: 整備
-  useSwr = (
-    key: Key,
-    _fetcher?: Fetcher,
-    _config?: FullConfiguration,
-  ): any => {
+  useSwr = (key: Key, _fetcher?: Fetcher, _config?: FullConfiguration): any => {
     const lastPath = typeof key === 'string' ? key.split('/').pop() : '';
     const target = getTarget(lastPath);
 

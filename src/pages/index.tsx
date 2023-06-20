@@ -1,11 +1,18 @@
+import styles from '@/styles/Home.module.css'
+import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import useSWR from 'swr'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const { data, error } = useSWR('/api/hello', (url) =>
+    fetch(url).then((res) => res.json()),
+    {
+      refreshInterval: 1000,
+    }
+  )
   return (
     <>
       <Head>

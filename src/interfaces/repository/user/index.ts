@@ -6,7 +6,7 @@ import {
   Data,
   GetUserClassResponse,
   GetUserClassRootParams,
-} from './getUserClass';
+} from './types/getUserClass';
 
 export class UserRepository implements IUserRepository {
   constructor(private readonly _client: IClient) {}

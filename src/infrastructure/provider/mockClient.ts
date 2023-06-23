@@ -1,4 +1,4 @@
-import { USERS } from '@/infrastructure/Path';
+import { BOOKS, USERS } from '@/infrastructure/Path';
 import IClient from '@/infrastructure/provider/IClient';
 import axiosBase from '@/infrastructure/provider/axiosBase';
 import { objectKeysToCamel } from '@/utils/changeCase';
@@ -19,6 +19,10 @@ const mockPaths = [
   {
     path: USERS,
     value: require('@/infrastructure/mock/data/users/index.ts').default,
+  },
+  {
+    path: BOOKS,
+    value: require('@/infrastructure/mock/data/books/index.ts').default,
   },
 ];
 

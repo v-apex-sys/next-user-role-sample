@@ -3,7 +3,7 @@ import {
   Data,
   GetUserClassResponse,
   GetUserClassRootParams,
-} from './getUserClass';
+} from './types/getUserClass';
 
 export default interface IUserRepository {
   fetchAll(): Promise<GetUserClassResponse<Data[]>>;

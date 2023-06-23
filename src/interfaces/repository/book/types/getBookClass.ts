@@ -14,3 +14,8 @@ export interface Data {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface GetBookClassResponse<T> {
+  message: 'ok';
+  data: T;
+}

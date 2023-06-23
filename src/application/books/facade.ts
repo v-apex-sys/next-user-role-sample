@@ -2,11 +2,15 @@ import httpClientFactory from '@/infrastructure/HttpClientFactory';
 import IClient from '@/infrastructure/provider/IClient';
 import { BookRepository } from '@/interfaces/repository/book';
 import { Fetch, FetchAll, FetchSWR } from './interactors';
+import { Create } from './interactors/create';
+import { Update } from './interactors/update';
 
 class UserFactory {
   private _findAll?: FetchAll;
   private _find?: Fetch;
   private _fetchSWR?: FetchSWR;
+  private _update?: Update;
+  private _create?: Create;
 
   constructor(private readonly _client: IClient) {}
 
@@ -35,6 +39,24 @@ class UserFactory {
     }
 
     return this._fetchSWR;
+  }
+
+  get update() {
+    if (!this._update) {
+      const repository = new BookRepository(this._client);
+      this._update = new Update(repository);
+    }
+
+    return this._update;
+  }
+
+  get create() {
+    if (!this._create) {
+      const repository = new BookRepository(this._client);
+      this._create = new Create(repository);
+    }
+
+    return this._create;
   }
 }
 

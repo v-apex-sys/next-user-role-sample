@@ -7,6 +7,7 @@ import {
   GetBookClassResponse,
   GetBookClassRootParams,
 } from './types/getBookClass';
+import { PutBookClassRequest } from './types/putBookClass';
 
 export class BookRepository implements IBookRepository {
   constructor(private readonly _client: IClient) {}
@@ -37,5 +38,16 @@ export class BookRepository implements IBookRepository {
       error,
       isLoading: !error && !data,
     };
+  }
+
+  async put(
+    rootParams: GetBookClassRootParams,
+    request: PutBookClassRequest,
+  ): Promise<void> {
+    this._client.put(API + `${BOOKS}/${rootParams.id}`, request);
+  }
+
+  async post(request: PutBookClassRequest): Promise<void> {
+    this._client.post(API + `${BOOKS}`, request);
   }
 }

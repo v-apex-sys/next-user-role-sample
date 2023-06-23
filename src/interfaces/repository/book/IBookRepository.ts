@@ -4,6 +4,7 @@ import {
   GetBookClassResponse,
   GetBookClassRootParams,
 } from './types/getBookClass';
+import { PutBookClassRequest } from './types/putBookClass';
 
 export default interface IBookRepository {
   fetchAll(): Promise<GetBookClassResponse<Data[]>>;
@@ -11,4 +12,9 @@ export default interface IBookRepository {
     rootParams: GetBookClassRootParams,
   ): Promise<GetBookClassResponse<Data>>;
   fetchSWR(): SwrResponse<'loading', GetBookClassResponse<Data[]>>;
+  put(
+    rootParams: GetBookClassRootParams,
+    request: PutBookClassRequest,
+  ): Promise<void>;
+  post(request: PutBookClassRequest): Promise<void>;
 }

@@ -12,6 +12,9 @@ const BookDetail = () => {
   useEffect(() => {
     const fetchFunction = async () => {
       const params = typeof id === 'string' ? id : '';
+      if (!params) {
+        return;
+      }
       const book = await bookUseCase.find({ id: Number(params) });
       setBook(book);
     };

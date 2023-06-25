@@ -24,6 +24,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# table
+src/pages/table/*
+
 # local env files
 .env*.local
 .env*

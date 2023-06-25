@@ -17,6 +17,7 @@
     "change-object-case": "^0.2.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "dayjs": "^1.11.8",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
     "lodash": "^4.17.21",

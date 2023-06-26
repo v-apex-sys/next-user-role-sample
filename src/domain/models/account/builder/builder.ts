@@ -1,6 +1,7 @@
+import { RoleType } from '../../role/role';
 import { AdminAccount } from '../adminAccount';
 import { ViewerAccount } from '../viewerAccount';
-import { CompanyName, Email, Id, Name, Password, RoleType } from '../vo';
+import { CompanyName, Email, Id, Name, Password } from '../vo';
 
 export interface Builder {
   addId(Id: Id): this;

@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 
 export const getApiUrl = (appEnv: string) => {
-  // NOTE: middlewareで環境変数の取得ができないためハードコーディング
+  // NOTE: middlewareで環境変数の取得ができないためハードコーディング、process.envではアクセス可能
   if (appEnv === 'local') {
     return 'http://localhost:8881';
   }

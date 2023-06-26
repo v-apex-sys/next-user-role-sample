@@ -1,6 +1,8 @@
+// NOTE: 動作確認だけのため命名はPJでの適切な命名とする
 export class Account {
-  // Admin / Viewer 全てのアカウントのプロパティを持つ
+  // Admin / Viewer 全てのプロパティを持つ
   id: string;
+  role: string;
   name: string;
   email: string;
   password: string;
@@ -8,6 +10,7 @@ export class Account {
 
   constructor() {
     this.id = '';
+    this.role = '';
     this.name = '';
     this.email = '';
     this.password = '';
@@ -25,8 +28,4 @@ export class Account {
   // protected abstract setPassword(password: Password): void;
   // abstract get companyName(): string;
   // protected abstract setCompanyName(companyName: CompanyName): void;
-
-  // sayHello(): string {
-  //   return `Hello, ${this.name}!`;
-  // }
 }

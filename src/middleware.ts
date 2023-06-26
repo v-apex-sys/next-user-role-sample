@@ -12,6 +12,7 @@ export async function middleware(request: NextRequest) {
   console.log('ran', request.nextUrl.pathname);
 
   const API_URL = getApiUrl(appEnv);
+  // NOTE: middleware上で必要なためfetchAPIで取得しているが、以降もrole情報が必要なため別途APIを叩いてroleを取得する
   const response = await fetch(API_URL + '/api/roles').catch((err) => {
     console.error(err);
     return { json: () => ({ role: '' }) };

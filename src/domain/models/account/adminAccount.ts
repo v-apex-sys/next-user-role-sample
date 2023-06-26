@@ -19,6 +19,9 @@ export class AdminAccount {
   get password(): string {
     return this._password;
   }
+  get companyName(): string {
+    return this._companyName;
+  }
 
   adminOnly(): string {
     return 'Admin only!';

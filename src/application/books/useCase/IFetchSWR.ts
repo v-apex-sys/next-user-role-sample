@@ -1,4 +1,4 @@
-import { SwrResponse } from '@/application/types';
+import { SwrResponse } from '@/interfaces/repository/types';
 import { FetchSWRBookClassResponse } from '../data/types';
 
 export interface IFetchSWR {

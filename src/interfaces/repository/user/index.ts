@@ -1,6 +1,6 @@
-import { SwrResponse } from '@/application/types';
 import { API, USERS } from '@/infrastructure/Path';
 import IClient from '@/infrastructure/provider/IClient';
+import { SwrResponse } from '@/interfaces/repository/types';
 import IUserRepository from '@/interfaces/repository/user/IUserRepository';
 import {
   Data,

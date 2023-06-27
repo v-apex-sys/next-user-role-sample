@@ -10,7 +10,7 @@ const roleState = atom<RoleState>({
   key: RECOIL_ATOMS_KEYS.ROLE,
   default: {
     role: undefined,
-    isFetching: false,
+    isFetching: true,
   },
 });
 

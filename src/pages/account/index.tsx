@@ -1,5 +1,6 @@
 import { AdminAccount } from '@/domain/models/account/adminAccount';
 import { accountGetters } from '@/store/account';
+import Link from 'next/link';
 
 export default function Page() {
   const { account } = accountGetters.useAccount();
@@ -15,6 +16,9 @@ export default function Page() {
           <p>{account?.password}</p>
           <p>{account instanceof AdminAccount && account.companyName}</p>
           <p>{account instanceof AdminAccount && account.adminOnly()}</p>
+          <Link href="/">
+            <p>to Home</p>
+          </Link>
         </div>
       )}
     </div>

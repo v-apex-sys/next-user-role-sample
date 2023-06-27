@@ -1,7 +1,7 @@
-import { SwrResponse } from '@/application/types';
 import { API, BOOKS } from '@/infrastructure/Path';
 import IClient from '@/infrastructure/provider/IClient';
 import IBookRepository from '@/interfaces/repository/book/IBookRepository';
+import { SwrResponse } from '@/interfaces/repository/types';
 import {
   Data,
   GetBookClassResponse,

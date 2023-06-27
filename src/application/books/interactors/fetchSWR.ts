@@ -1,7 +1,7 @@
 import { IFetchSWR } from '@/application/books/useCase';
-import { SwrResponse } from '@/application/types';
 import { Book } from '@/domain/models/books/book';
 import IBookRepository from '@/interfaces/repository/book/IBookRepository';
+import { SwrResponse } from '@/interfaces/repository/types';
 import { FetchSWRBookClassResponse } from '../data/types';
 
 export class FetchSWR implements IFetchSWR {

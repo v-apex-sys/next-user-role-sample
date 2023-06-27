@@ -1,6 +1,6 @@
-import { SwrResponse } from '@/application/types';
 import { IFetchSWR } from '@/application/users/useCase';
 import { User } from '@/domain/models/users/user';
+import { SwrResponse } from '@/interfaces/repository/types';
 import IUserRepository from '@/interfaces/repository/user/IUserRepository';
 import { FetchSWRUserClassResponse } from '../data/types';
 

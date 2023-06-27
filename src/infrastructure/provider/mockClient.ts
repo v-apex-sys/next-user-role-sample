@@ -17,6 +17,14 @@ const wrapPromise = (item: any) =>
 
 const mockPaths = [
   {
+    path: 'roles',
+    value: require('@/infrastructure/mock/data/role/index.ts').default,
+  },
+  {
+    path: 'account',
+    value: require('@/infrastructure/mock/data/account/index.ts').default,
+  },
+  {
     path: USERS,
     value: require('@/infrastructure/mock/data/users/index.ts').default,
   },

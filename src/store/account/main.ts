@@ -11,7 +11,7 @@ const accountState = atom<AccountState>({
   key: RECOIL_ATOMS_KEYS.ACCOUNT,
   default: {
     account: undefined,
-    isFetching: false,
+    isFetching: true,
   },
 });
 

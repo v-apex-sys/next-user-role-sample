@@ -1,3 +1,4 @@
+import Loading from '@/components/organisms/navigators/Loading';
 import { accountActions, accountGetters } from '@/store/account';
 import { roleActions, roleGetters } from '@/store/role';
 import { ReactNode, useEffect } from 'react';
@@ -13,7 +14,7 @@ export const Wrapper = ({ children }: Props) => {
   const { fetchRole } = roleActions.useFetchRole();
   const { role } = roleGetters.useRole();
   const { fetchAccount } = accountActions.useFetchAccount();
-  const { account } = accountGetters.useAccount();
+  const { account, isFetching } = accountGetters.useAccount();
 
   useEffect(() => {
     const fetchFunction = () => {
@@ -31,7 +32,7 @@ export const Wrapper = ({ children }: Props) => {
       if (!!account) {
         return;
       }
-      if (role) {
+      if (!!role) {
         fetchAccount(role);
       }
     };
@@ -39,5 +40,5 @@ export const Wrapper = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [role, fetchAccount]);
 
-  return children;
+  return isFetching ? <Loading /> : children;
 };

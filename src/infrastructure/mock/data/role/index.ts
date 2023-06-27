@@ -1,5 +1,5 @@
-const role = {
+const data = {
   role: 'admin',
 };
 
-export default role.role;
+export default data;

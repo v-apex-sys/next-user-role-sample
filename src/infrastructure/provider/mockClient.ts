@@ -21,7 +21,7 @@ const mockPaths = [
     value: require('@/infrastructure/mock/data/role/index.ts').default,
   },
   {
-    path: 'account',
+    path: 'accounts',
     value: require('@/infrastructure/mock/data/account/index.ts').default,
   },
   {

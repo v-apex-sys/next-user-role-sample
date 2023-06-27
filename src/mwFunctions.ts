@@ -22,7 +22,10 @@ export const isHogePage = (request: NextRequest) => {
 };
 
 /** login済みかのチェックを行う */
-export const isAuthorized = (request: NextRequest) => {
+export const isAuthorized = (request: NextRequest, appEnv: string) => {
+  if (appEnv === 'local') {
+    return true;
+  }
   // NOTE: access_tokenはSecureとHttpOnlyによって悪意のあるサイトからのCookieの盗み出しを防いでいる
   // 万が一があっても、REST APIを叩く時にはサーバーサイド側でエラーを返すため、ログイン後にしか見れない情報が漏洩することはない
   return request.cookies.has('access_token');

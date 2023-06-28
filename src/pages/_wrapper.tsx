@@ -16,6 +16,7 @@ export const Wrapper = ({ children }: Props) => {
   const { fetchAccount } = accountActions.useFetchAccount();
   const { account, isFetching } = accountGetters.useAccount();
 
+  // TODO: suspenseが行けるかチェック
   useEffect(() => {
     const fetchFunction = () => {
       if (!!role) {

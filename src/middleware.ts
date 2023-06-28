@@ -8,6 +8,13 @@ import {
 } from './mwFunctions';
 const appEnv = process.env.APP_ENV || 'development';
 
+// ISR とか SSR とか pre rendering時はどうなる？
+// middlewareで
+// 1段階
+// ログインで弾かれたページのプレレンダリングが行われるか
+// 2段階
+// 動的ルーティングのページ、getStaticPathで指定した所がプレレンダリングされるか
+
 export async function middleware(request: NextRequest) {
   console.log('ran', request.nextUrl.pathname);
 

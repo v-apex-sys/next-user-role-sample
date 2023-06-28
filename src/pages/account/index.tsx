@@ -19,6 +19,10 @@ export default function Page() {
           <Link href="/">
             <p>to Home</p>
           </Link>
+          {/* 部品の出しわけはroleををみる */}
+          {/* domainごとの処理は instanceofで判断 */}
+          {/* {role === 'admin' && <Button />} */}
+          {/* {button} */}
         </div>
       )}
     </div>

@@ -11,14 +11,14 @@ import {
 export class UserRepository implements IUserRepository {
   constructor(private readonly _client: IClient) {}
 
-  async fetchAll(): Promise<GetUserClassResponse<Data[]>> {
+  async getAll(): Promise<GetUserClassResponse<Data[]>> {
     const { data } = await this._client.get<GetUserClassResponse<Data[]>>(
       API + USERS,
     );
     return data;
   }
 
-  async fetch(
+  async get(
     rootParams: GetUserClassRootParams,
   ): Promise<GetUserClassResponse<Data>> {
     const { data } = await this._client.get<GetUserClassResponse<Data>>(
@@ -27,7 +27,7 @@ export class UserRepository implements IUserRepository {
     return data;
   }
 
-  fetchSWR(): SwrResponse<'loading', GetUserClassResponse<Data[]> | undefined> {
+  getSWR(): SwrResponse<'loading', GetUserClassResponse<Data[]> | undefined> {
     const { data, error } = this._client.useSwr<GetUserClassResponse<Data[]>>(
       API + USERS,
     );

@@ -12,7 +12,7 @@ export class Fetch implements IFetch {
   async execute(
     params: FetchBookClassRootParams,
   ): Promise<FetchBookClassResponse> {
-    const { data } = await this.bookRepository.fetch(params);
+    const { data } = await this.bookRepository.get(params);
     return new Book(
       data.id,
       data.title,

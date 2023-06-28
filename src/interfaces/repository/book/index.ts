@@ -12,14 +12,14 @@ import { PutBookClassRequest } from './types/putBookClass';
 export class BookRepository implements IBookRepository {
   constructor(private readonly _client: IClient) {}
 
-  async fetchAll(): Promise<GetBookClassResponse<Data[]>> {
+  async getAll(): Promise<GetBookClassResponse<Data[]>> {
     const { data } = await this._client.get<GetBookClassResponse<Data[]>>(
       API + BOOKS,
     );
     return data;
   }
 
-  async fetch(
+  async get(
     rootParams: GetBookClassRootParams,
   ): Promise<GetBookClassResponse<Data>> {
     const { data } = await this._client.get<GetBookClassResponse<Data>>(
@@ -28,7 +28,7 @@ export class BookRepository implements IBookRepository {
     return data;
   }
 
-  fetchSWR(): SwrResponse<'loading', GetBookClassResponse<Data[]> | undefined> {
+  getSWR(): SwrResponse<'loading', GetBookClassResponse<Data[]> | undefined> {
     const { data, error } = this._client.useSwr<GetBookClassResponse<Data[]>>(
       API + BOOKS,
     );

@@ -1,4 +1,4 @@
-import { SwrResponse } from '@/interfaces/repository/types';
+import { SwrResponse } from '@/application/types';
 import {
   CreateBookClassParams,
   FetchAllBookClassResponse,

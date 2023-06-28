@@ -7,7 +7,7 @@ export class FetchAll implements IFetchAll {
   constructor(private readonly userRepository: IUserRepository) {}
 
   async execute(): Promise<FetchAllUserClassResponse> {
-    const users = await this.userRepository.fetchAll();
+    const users = await this.userRepository.getAll();
     return users?.data?.map((user) => {
       return new User(user.id, user.name, user.mailAddress);
     });

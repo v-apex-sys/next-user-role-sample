@@ -7,7 +7,7 @@ import { IAccountRepository } from './IAccountRepository';
 export class AccountRepository implements IAccountRepository {
   constructor(private readonly client: IClient) {}
 
-  async find(): Promise<Account> {
+  async get(): Promise<Account> {
     // FIXME: IDは動的な値を渡す
     const { data } = await this.client.get<IResponse<Account>>(
       API + 'accounts/1',

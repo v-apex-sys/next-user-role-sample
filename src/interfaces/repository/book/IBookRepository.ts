@@ -7,11 +7,11 @@ import {
 import { PutBookClassRequest } from './types/putBookClass';
 
 export default interface IBookRepository {
-  fetchAll(): Promise<GetBookClassResponse<Data[]>>;
-  fetch(
+  getAll(): Promise<GetBookClassResponse<Data[]>>;
+  get(
     rootParams: GetBookClassRootParams,
   ): Promise<GetBookClassResponse<Data>>;
-  fetchSWR(): SwrResponse<'loading', GetBookClassResponse<Data[]>>;
+  getSWR(): SwrResponse<'loading', GetBookClassResponse<Data[]>>;
   put(
     rootParams: GetBookClassRootParams,
     request: PutBookClassRequest,

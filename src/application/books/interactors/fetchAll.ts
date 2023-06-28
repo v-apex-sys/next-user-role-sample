@@ -7,7 +7,7 @@ export class FetchAll implements IFetchAll {
   constructor(private readonly bookRepository: IBookRepository) {}
 
   async execute(): Promise<FetchAllBookClassResponse> {
-    const books = await this.bookRepository.fetchAll();
+    const books = await this.bookRepository.getAll();
     return books?.data?.map((data) => {
       return new Book(
         data.id,

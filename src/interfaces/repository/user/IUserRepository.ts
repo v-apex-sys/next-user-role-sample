@@ -6,9 +6,9 @@ import {
 } from './types/getUserClass';
 
 export default interface IUserRepository {
-  fetchAll(): Promise<GetUserClassResponse<Data[]>>;
-  fetch(
+  getAll(): Promise<GetUserClassResponse<Data[]>>;
+  get(
     rootParams: GetUserClassRootParams,
   ): Promise<GetUserClassResponse<Data>>;
-  fetchSWR(): SwrResponse<'loading', GetUserClassResponse<Data[]>>;
+  getSWR(): SwrResponse<'loading', GetUserClassResponse<Data[]>>;
 }

@@ -12,7 +12,7 @@ export class Fetch implements IFetch {
   async execute(
     params: FetchUserClassRootParams,
   ): Promise<FetchUserClassResponse> {
-    const { data } = await this.userRepository.fetch(params);
+    const { data } = await this.userRepository.get(params);
     return new User(data.id, data.name, data.mailAddress);
   }
 }

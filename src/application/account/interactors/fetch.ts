@@ -13,7 +13,7 @@ export class Fetch implements IFetch {
   async execute(
     role?: RoleType,
   ): Promise<AdminAccount | ViewerAccount | undefined> {
-    const account = await this.accountRepository.find();
+    const account = await this.accountRepository.get();
     console.log('class Fetch account: ', account);
 
     const builder = new AccountBuilder(new Account());

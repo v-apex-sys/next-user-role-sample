@@ -6,7 +6,7 @@ import { IRoleRepository } from './IRoleRepository';
 export class RoleRepository implements IRoleRepository {
   constructor(private readonly client: IClient) {}
 
-  async fetch(): Promise<RoleType> {
+  async get(): Promise<RoleType> {
     const { data } = await this.client.get<{ role: RoleType }>(API + 'roles');
     return data.role;
   }

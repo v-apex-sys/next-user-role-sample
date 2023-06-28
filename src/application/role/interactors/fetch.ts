@@ -6,7 +6,7 @@ export class Fetch implements IFetch {
   constructor(private readonly roleRepository: IRoleRepository) {}
 
   async execute(): Promise<RoleType> {
-    const data = await this.roleRepository.fetch();
+    const data = await this.roleRepository.get();
     return data;
   }
 }

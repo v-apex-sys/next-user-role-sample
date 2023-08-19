@@ -16,6 +16,7 @@ export async function middleware(request: NextRequest) {
   let response;
   if (process.env.APP_ENV === 'local') {
     response = { json: () => ({ role: 'admin' }) };
+    // response = { json: () => ({ role: 'viewer' }) };
   } else {
     response = await fetch(API_URL + '/api/roles').catch((err) => {
       console.error(err);
@@ -36,9 +37,16 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Admin権限で閲覧できないページ
-  if (isAdmin(data.role)) {
+  // ログインページ以外でログインしていない場合はログインページにリダイレクト
+  if (!isLoginPage(request) && !isAuthorized(request, appEnv)) {
+    console.log('ログインしていないのでリダイレクトされました');
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  // Admin権限じゃないと閲覧できないページ
+  if (!isAdmin(data.role)) {
     if (isHogePage(request)) {
+      console.log('Admin権限ではないのでリダイレクトされました');
       return NextResponse.redirect(new URL('/', request.url));
     }
   }

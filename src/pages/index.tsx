@@ -13,6 +13,9 @@ const index = () => {
       <Link href="/account">
         <p>to Account</p>
       </Link>
+      <Link href="/hoge">
+        <p>to Hoge</p>
+      </Link>
     </>
   );
 };

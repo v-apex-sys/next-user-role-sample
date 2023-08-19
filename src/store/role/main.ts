@@ -6,7 +6,7 @@ import { RECOIL_ATOMS_KEYS } from '../keys';
 import { RoleActions, RoleGetters, RoleState } from './types';
 
 // state はそのまま export しない、getters と actions を export する
-const roleState = atom<RoleState>({
+export const roleState = atom<RoleState>({
   key: RECOIL_ATOMS_KEYS.ROLE,
   default: {
     role: undefined,

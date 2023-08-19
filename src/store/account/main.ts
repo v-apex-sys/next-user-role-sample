@@ -1,63 +1,27 @@
 import { accountUseCase } from '@/application/account';
-import { useCallback } from 'react';
-import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+import { selector, useRecoilValueLoadable } from 'recoil';
 
-import { RoleType } from '@/domain/models/role/role';
 import { RECOIL_ATOMS_KEYS } from '../keys';
-import { AccountActions, AccountGetters, AccountState } from './types';
+import { roleState } from '../role/main';
+import { AccountGetters, AccountState } from './types';
 
 // state はそのまま export しない、getters と actions を export する
-const accountState = atom<AccountState>({
+const accountState = selector<AccountState>({
   key: RECOIL_ATOMS_KEYS.ACCOUNT,
-  default: {
-    account: undefined,
-    isFetching: true,
+  get: async ({ get }) => {
+    const role = get(roleState).role;
+    if (!role) {
+      return undefined;
+    }
+    return await accountUseCase.fetch(role);
   },
 });
 
 // Getter的役割
 const useAccount = () => {
-  return useRecoilValue(accountState);
+  return useRecoilValueLoadable(accountState);
 };
 
 export const accountGetters: AccountGetters = {
   useAccount,
-};
-
-// Action をカスタムフックとして定義
-/**  account の fetch */
-const useFetchAccount = () => {
-  const setState = useSetRecoilState(accountState);
-
-  const fetchAccount = useCallback(
-    async (role?: RoleType) => {
-      setState({
-        isFetching: true,
-      });
-
-      const account = await accountUseCase.fetch(role);
-
-      console.log('account', account);
-
-      setState(() => {
-        if (!account) {
-          return {
-            account: undefined,
-            isFetching: false,
-          };
-        }
-        return {
-          account,
-          isFetching: false,
-        };
-      });
-    },
-    [setState],
-  );
-
-  return { fetchAccount };
-};
-
-export const accountActions: AccountActions = {
-  useFetchAccount,
 };

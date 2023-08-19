@@ -1,16 +1,14 @@
 import { AdminAccount } from '@/domain/models/account/adminAccount';
 import { ViewerAccount } from '@/domain/models/account/viewerAccount';
 import { RoleType } from '@/domain/models/role/role';
+import { Loadable } from 'recoil';
 
 /** State の型 */
-export type AccountState = {
-  account?: AdminAccount | ViewerAccount;
-  isFetching: boolean;
-};
+export type AccountState = AdminAccount | ViewerAccount | undefined;
 
 /** Getters の型 */
 export type AccountGetters = {
-  useAccount: () => AccountState;
+  useAccount: () => Loadable<AccountState>;
 };
 
 /** Actions の型 */

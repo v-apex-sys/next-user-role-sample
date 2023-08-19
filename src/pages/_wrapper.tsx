@@ -1,5 +1,5 @@
 import Loading from '@/components/organisms/navigators/Loading';
-import { accountActions, accountGetters } from '@/store/account';
+import { accountGetters } from '@/store/account';
 import { roleActions, roleGetters } from '@/store/role';
 import { ReactNode, useEffect } from 'react';
 
@@ -13,8 +13,7 @@ interface Props {
 export const Wrapper = ({ children }: Props) => {
   const { fetchRole } = roleActions.useFetchRole();
   const { role } = roleGetters.useRole();
-  const { fetchAccount } = accountActions.useFetchAccount();
-  const { account, isFetching } = accountGetters.useAccount();
+  const accountLodable = accountGetters.useAccount();
 
   useEffect(() => {
     const fetchFunction = () => {
@@ -27,18 +26,13 @@ export const Wrapper = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const fetchFunction = () => {
-      if (!!account) {
-        return;
-      }
-      if (!!role) {
-        fetchAccount(role);
-      }
-    };
-    fetchFunction();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [role, fetchAccount]);
+  if (accountLodable.state === 'loading') {
+    return <Loading />;
+  }
 
-  return isFetching ? <Loading /> : children;
+  if (accountLodable.state === 'hasError') {
+    return <div>エラーが発生しました</div>;
+  }
+
+  return children;
 };

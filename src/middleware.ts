@@ -15,8 +15,8 @@ export async function middleware(request: NextRequest) {
   // NOTE: middleware上で必要なためfetchAPIで取得しているが、以降もrole情報が必要なため別途APIを叩いてroleを取得する
   let response;
   if (process.env.APP_ENV === 'local') {
-    response = { json: () => ({ role: 'admin' }) };
-    // response = { json: () => ({ role: 'viewer' }) };
+    // response = { json: () => ({ role: 'admin' }) };
+    response = { json: () => ({ role: 'viewer' }) };
   } else {
     response = await fetch(API_URL + '/api/roles').catch((err) => {
       console.error(err);

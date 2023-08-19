@@ -1,6 +1,6 @@
 const data = {
-  role: 'admin',
-  // role: 'viewer',
+  // role: 'admin',
+  role: 'viewer',
 };
 
 export default data;

@@ -2,7 +2,8 @@ version: 0.0
 os: linux
 files:
   - source: ./.next
-    destination: /var/www/html/rentals
+  # 各ファイルのパスが通るように
+    destination: /var/www/html/rentals/_next
 file_exists_behavior: OVERWRITE
 permissions:
   - object: /var/www/html

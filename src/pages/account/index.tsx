@@ -16,7 +16,7 @@ export default function Page() {
           <p>{account?.password}</p>
           <p>{account instanceof AdminAccount && account.companyName}</p>
           <p>{account instanceof AdminAccount && account.adminOnly()}</p>
-          <Link href="/">
+          <Link href="/" prefetch={false}>
             <p>to Home</p>
           </Link>
         </div>

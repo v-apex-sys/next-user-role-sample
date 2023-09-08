@@ -7,10 +7,10 @@ const index = () => {
   return (
     <>
       <p>Role: {role && role}</p>
-      <Link href="/user">
+      <Link href="/user" prefetch={false}>
         <p>to User</p>
       </Link>
-      <Link href="/account">
+      <Link href="/account" prefetch={false}>
         <p>to Account</p>
       </Link>
     </>

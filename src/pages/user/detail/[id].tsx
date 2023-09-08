@@ -25,7 +25,9 @@ const UserDetail = () => {
         <p>{user?.name}</p>
         <p>{user?.mailAddress}</p>
         <div>
-          <Link href="/user">to User</Link>
+          <Link href="/user" prefetch={false}>
+            to User
+          </Link>
         </div>
       </>
     )

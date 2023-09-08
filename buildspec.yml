@@ -13,6 +13,8 @@ phases:
       - echo Build started on `date`
       - mkdir ./.env
       - echo module.exports = { API_URL:\'$API_URL\' } >> ./.env/local.js
+      - echo module.exports = { API_URL:\'$API_URL\' } >> ./.env/development.js
+      - echo module.exports = { API_URL:\'$API_URL\' } >> ./.env/production.js
       - cat ./.env/local.js
       - yarn export
   post_build:

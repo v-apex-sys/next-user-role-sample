@@ -10,7 +10,7 @@ interface Props {
 /**
  * 必要な情報を事前に取得
  */
-export const Wrapper = ({ children }: Props) => {
+const Wrapper = ({ children }: Props) => {
   const { fetchRole } = roleActions.useFetchRole();
   const { role } = roleGetters.useRole();
   const { fetchAccount } = accountActions.useFetchAccount();
@@ -43,3 +43,5 @@ export const Wrapper = ({ children }: Props) => {
 
   return isFetching ? <Loading /> : children;
 };
+
+export default Wrapper;

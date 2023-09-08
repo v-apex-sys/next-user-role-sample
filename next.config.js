@@ -1,8 +1,19 @@
 const deploymentEnv = process.env.APP_ENV || 'development';
-const environment = require(`./.env.${deploymentEnv}.js`);
+
+// 変数での出しわけができなかったのでこのようにしてます（気になったら変更いただいても）
+import localEnvFile from './.env/local.js';
+import devEnvFile from './.env/development.js';
+import prodEnvFile from './.env/production.js';
+
+const environment =
+  deploymentEnv === 'local'
+    ? localEnvFile
+    : deploymentEnv === 'development'
+    ? devEnvFile
+    : prodEnvFile;
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   env: { APP_ENV: process.env.APP_ENV, ...environment },
   async rewrites() {
@@ -14,3 +25,5 @@ module.exports = {
     ];
   },
 };
+
+export default nextConfig;

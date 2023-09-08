@@ -1,0 +1,31 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      # https://docs.aws.amazon.com/ja_jp/codebuild/latest/userguide/available-runtimes.html
+      nodejs: 18
+    commands:
+      - echo install started on `date`
+      - node -e "console.log('Running Node.js ' + process.version)"
+      - yarn install
+  build:
+    commands:
+      - echo Build started on `date`
+      - mkdir ./.env
+      - echo module.exports = { API_URL:\'$API_URL\' } >> ./.env/local.js
+      - cat ./.env/local.js
+      - yarn export
+  post_build:
+    commands:
+      - pwd
+      - ls -a
+#      - aws s3 sync ./build s3://### --delete --acl public-read
+#      - aws cloudfront create-invalidation --distribution-id ###ID### --paths "/*"
+artifacts:
+  files:
+    - ./.next/**/*
+    - ./appspec.yml
+cache:
+  paths:
+    - 'node_modules/**/*' # Cache `node_modules` for faster `yarn` or `npm i`
+    - '.next/cache/**/*' # Cache Next.js for faster application rebuilds

@@ -24,3 +24,10 @@ export default function Page() {
     </div>
   );
 }
+
+// 適当なpropsを返せば404が発生しなくなるかのテスト
+export async function getStaticSideProps(context: any) {
+  return {
+    props: {},
+  };
+}

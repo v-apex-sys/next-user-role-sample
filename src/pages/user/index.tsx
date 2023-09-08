@@ -30,3 +30,10 @@ const UserIndex = () => {
 };
 
 export default UserIndex;
+
+// 適当なpropsを返せば404が発生しなくなるかのテスト
+export async function getStaticSideProps(context: any) {
+  return {
+    props: {},
+  };
+}

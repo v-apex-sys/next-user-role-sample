@@ -24,13 +24,13 @@ const BookIndex = () => {
             <p>担当者: {book.author}</p>
             <p>作成日: {book.author}</p>
             <p>更新日: {book.updatedAt}</p>
-            <Link href={`/book/detail/${book.id}`}>
+            <Link href={`/book/detail/${book.id}`} prefetch={false}>
               to Detail
             </Link>
           </div>
         ))}
       <p>
-        <Link href={`/book/new`}>
+        <Link href={`/book/new`} prefetch={false}>
           to New
         </Link>
       </p>

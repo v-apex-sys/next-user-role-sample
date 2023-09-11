@@ -53,7 +53,7 @@ const BookDetail = () => {
           <button onClick={handleClickEdit}>修正</button>
         </p>
         <div>
-          <Link href="/book">
+          <Link href="/book" prefetch={false}>
             to Book
           </Link>
         </div>

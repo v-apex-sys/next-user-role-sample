@@ -9,8 +9,7 @@
     "build": "next build",
     "start": "next start",
     "export": "cross-env APP_ENV=local next build",
-    "lint": "next lint",
-    "ts-esm": "node --loader ts-node/esm"
+    "lint": "next lint"
   },
   "dependencies": {
     "@types/node": "20.3.1",

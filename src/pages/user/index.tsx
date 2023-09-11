@@ -3,7 +3,7 @@ import { User } from '@/domain/models/users/user';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const UserIndex = () => {
+const UserIndex = (pageProps:any) => {
   const [users, setUsers] = useState<User[]>();
 
   const handleClick = async () => {
@@ -22,9 +22,7 @@ const UserIndex = () => {
             <p key={user.id}>
               ID: {user.id}、NAME: {user.name}、MailAddress: {user.mailAddress}
             </p>
-            <Link href={`/user/detail/${user.id}`}>
-              to Detail
-            </Link>
+            <Link href={`/user/detail/${user.id}`}>to Detail</Link>
           </>
         ))}
     </>
@@ -34,8 +32,11 @@ const UserIndex = () => {
 export default UserIndex;
 
 // 適当なpropsを返せば404が発生しなくなるかのテスト
-export async function getStaticSideProps(context: any) {
+export async function getStaticProps({ params }: any) {
+  // const post = await getPost();
   return {
-    props: {},
+    props: {
+      fake: 'data',
+    },
   };
 }

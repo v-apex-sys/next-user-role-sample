@@ -3,8 +3,6 @@ import { User } from '@/domain/models/users/user';
 import Link from 'next/link';
 import { useState } from 'react';
 
-
-
 const UserIndex = () => {
   const [users, setUsers] = useState<User[]>();
 

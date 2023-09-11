@@ -2,20 +2,8 @@ import { AdminAccount } from '@/domain/models/account/adminAccount';
 import { accountGetters } from '@/store/account';
 import Link from 'next/link';
 
-async function getQuotes() {
-  const r = await fetch(
-    'https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060',
-  ).then((res) => res.json());
-  // const res = await r.json()
-  console.log(r);
-  return await r;
-}
-
 export default function Page() {
   const { account } = accountGetters.useAccount();
-
-  const tes = getQuotes();
-  console.log(tes);
 
   return (
     <div>
@@ -35,11 +23,4 @@ export default function Page() {
       )}
     </div>
   );
-}
-
-// 適当なpropsを返せば404が発生しなくなるかのテスト
-export async function getStaticSideProps(context: any) {
-  return {
-    props: {},
-  };
 }

@@ -32,7 +32,7 @@ const UserIndex = (pageProps:any) => {
 export default UserIndex;
 
 // 適当なpropsを返せば404が発生しなくなるかのテスト
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   // const post = await getPost();
   return {
     props: {

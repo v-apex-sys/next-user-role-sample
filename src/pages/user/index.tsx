@@ -22,7 +22,7 @@ const UserIndex = () => {
             <p key={user.id}>
               ID: {user.id}、NAME: {user.name}、MailAddress: {user.mailAddress}
             </p>
-            <Link href={`/user/detail/${user.id}`} prefetch={false}>
+            <Link href={`/user/detail/${user.id}`}>
               to Detail
             </Link>
           </>

@@ -53,7 +53,7 @@ const BookNew = () => {
         <button onClick={handleClickCreate}>登録</button>
       </p>
       <div>
-        <Link href="/book" prefetch={false}>
+        <Link href="/book">
           to Book
         </Link>
       </div>

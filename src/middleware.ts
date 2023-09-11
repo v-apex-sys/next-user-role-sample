@@ -60,6 +60,7 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|next.svg|thirteen.svg|vercel.svg).*)',
+    // '/((?!api|_next/static|_next/image|favicon.ico|next.svg|thirteen.svg|vercel.svg).*)',
+    '/((?!api|_next/static|_next/image|_next/data|favicon.ico|next.svg|thirteen.svg|vercel.svg).*)',
   ],
 };

@@ -18,6 +18,10 @@ export const isLoginPage = (request: NextRequest) => {
   return request.nextUrl.pathname.startsWith('/login');
 };
 
+export const isAccountPage = (request: NextRequest) => {
+  return request.nextUrl.pathname.startsWith('/account');
+};
+
 export const isHogePage = (request: NextRequest) => {
   return request.nextUrl.pathname.startsWith('/hoge');
 };

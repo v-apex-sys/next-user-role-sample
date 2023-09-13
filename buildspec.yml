@@ -16,7 +16,9 @@ phases:
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/development.js
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/production.js
       - cat ./.env/local.js
-      - echo export default { "type":"module" } >> ./package.json
+      - mkdir ./local_only
+      - mv package.json ./local_only # 元々のpackage.jsonはデプロイされないように場所を移す
+      - echo { "type":"module" } >> ./package.json # デプロイサーバに設置するpackage.jsonを生成
       - yarn export
   post_build:
     commands:

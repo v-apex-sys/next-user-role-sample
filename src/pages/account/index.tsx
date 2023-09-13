@@ -1,8 +1,15 @@
 import { AdminAccount } from '@/domain/models/account/adminAccount';
 import { accountGetters } from '@/store/account';
+import axios from 'axios';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
-export default function Page() {
+interface Props {
+  data: any;
+}
+
+export default function Page({ data }: Props) {
+  console.log(data);
   const { account } = accountGetters.useAccount();
 
   return (
@@ -16,7 +23,7 @@ export default function Page() {
           <p>{account?.password}</p>
           <p>{account instanceof AdminAccount && account.companyName}</p>
           <p>{account instanceof AdminAccount && account.adminOnly()}</p>
-          <Link href="/" prefetch={false}>
+          <Link href="/">
             <p>to Home</p>
           </Link>
         </div>
@@ -24,3 +31,14 @@ export default function Page() {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await axios
+    .get('https://jsonplaceholder.typicode.com/todos')
+    .catch((error) => {
+      console.error(error);
+      return Promise.reject(error);
+    });
+
+  return { props: { data } };
+};

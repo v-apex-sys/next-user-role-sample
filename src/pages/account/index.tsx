@@ -1,15 +1,13 @@
 import { AdminAccount } from '@/domain/models/account/adminAccount';
 import { accountGetters } from '@/store/account';
-import axios from 'axios';
-import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
-interface Props {
-  data: any;
-}
+// interface Props {
+//   data: any;
+// }
 
-export default function Page({ data }: Props) {
-  console.log(data);
+export default function Page() {
+  // console.log(data);
   const { account } = accountGetters.useAccount();
 
   return (
@@ -32,13 +30,13 @@ export default function Page({ data }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await axios
-    .get('https://jsonplaceholder.typicode.com/todos')
-    .catch((error) => {
-      console.error(error);
-      return Promise.reject(error);
-    });
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { data } = await axios
+//     .get('https://jsonplaceholder.typicode.com/todos')
+//     .catch((error) => {
+//       console.error(error);
+//       return Promise.reject(error);
+//     });
 
-  return { props: { data } };
-};
+//   return { props: { data } };
+// };

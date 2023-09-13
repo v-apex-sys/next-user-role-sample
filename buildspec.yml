@@ -15,10 +15,7 @@ phases:
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/local.js
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/development.js
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/production.js
-      - cat ./.env/local.js
-      - mkdir ./local_only
-      - mv package.json ./local_only # 元々のpackage.jsonはデプロイされないように場所を移す
-      - echo { \"type\":\"module\" } >> ./package.json # デプロイサーバに設置するpackage.jsonを生成
+      - cat ./.env/local.js 
       - yarn export
   post_build:
     commands:
@@ -35,7 +32,6 @@ artifacts:
     - next.config.js
     - .env/**/*
     - scripts/**/*
-    - package.json
 # cache:
 #   paths:
 #     - 'node_modules/**/*' # Cache `node_modules` for faster `yarn` or `npm i`

@@ -16,6 +16,7 @@ phases:
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/development.js
       - echo export default { API_URL:\'$API_URL\' } >> ./.env/production.js
       - cat ./.env/local.js
+      - echo export default { "type":"module" } >> ./package.json
       - yarn export
   post_build:
     commands:
@@ -32,6 +33,7 @@ artifacts:
     - next.config.js
     - .env/**/*
     - scripts/**/*
+    - package.json
 # cache:
 #   paths:
 #     - 'node_modules/**/*' # Cache `node_modules` for faster `yarn` or `npm i`

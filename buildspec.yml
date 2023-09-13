@@ -18,7 +18,7 @@ phases:
       - cat ./.env/local.js
       - mkdir ./local_only
       - mv package.json ./local_only # 元々のpackage.jsonはデプロイされないように場所を移す
-      - echo { "type":"module" } >> ./package.json # デプロイサーバに設置するpackage.jsonを生成
+      - echo { \"type\":\"module\" } >> ./package.json # デプロイサーバに設置するpackage.jsonを生成
       - yarn export
   post_build:
     commands:

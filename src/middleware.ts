@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {
   getApiUrl,
+  isAccountPage,
   isAdmin,
   isAuthorized,
   isHogePage,
@@ -40,6 +41,11 @@ export async function middleware(request: NextRequest) {
 
   // middlewareファイルは1つしか持てないので、肥大化しないように判定ロジックは関数に切り出す
   if (isLoginPage(request) && isAuthorized(request, appEnv)) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
+  // ログインしていない場合はログインページにリダイレクト
+  if (isAccountPage(request) && !isAuthorized(request, appEnv)) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
